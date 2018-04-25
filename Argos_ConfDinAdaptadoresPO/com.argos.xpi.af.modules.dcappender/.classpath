@@ -18,9 +18,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="com.sap.ext.libs.xpi.classpathContainer/adapter"/>
-	<classpathentry kind="lib" path="C:/NWDS 7.5/plugins/com.sap.ext.libs.xpi_1.0.0.171115125502/DesigntimeAPIs/com.sap.aii.af.ms.ifc_api.jar"/>
-	<classpathentry kind="lib" path="C:/NWDS 7.5/plugins/com.sap.ext.libs.xpi_1.0.0.171115125502/DesigntimeAPIs/com.sap.xpi.ib.mapping.lib.jar"/>
-	<classpathentry kind="lib" path="C:/NWDS 7.5/plugins/com.sap.ext.libs.xpi_1.0.0.171115125502/DesigntimeAPIs/com.sap.aii.adapter.xi.jar"/>
-	<classpathentry kind="lib" path="C:/NWDS 7.5/plugins/com.sap.ext.libs.xpi_1.0.0.171115125502/DesigntimeAPIs/com.sap.aii.af.sdk.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sergio.marriaga/git/Argos_ConfDinAdaptadoresPO/com.sap.aii.adapter.xi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sergio.marriaga/git/Argos_ConfDinAdaptadoresPO/com.sap.aii.af.ms.ifc_api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sergio.marriaga/git/Argos_ConfDinAdaptadoresPO/com.sap.aii.af.sdk.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sergio.marriaga/git/Argos_ConfDinAdaptadoresPO/com.sap.xpi.ib.mapping.lib.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
