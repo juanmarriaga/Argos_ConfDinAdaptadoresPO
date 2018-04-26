@@ -32,8 +32,8 @@ private static final String PARAMETER_WS_URL_PATH = "wsUrl.path";
 private static final String PARAMETER_WS_NAME = "ws.name";
 
 
-private static final String PARAMETER_DC_ATTR_NAME = "attribute.name";
-private static final String PARAMETER_DC_ATTR_NAMESPACE = "attribute.namespace";
+private static final String PARAMETER_DC_ATTR_NAME = "attribute.name"; //TserverLocation
+private static final String PARAMETER_DC_ATTR_NAMESPACE = "attribute.namespace"; //Http... Namespace donde queda
 
 
 
@@ -180,7 +180,7 @@ throw new DynamicConfigurationProviderException(String.format("Invalid configura
 }
 
 
-
+		
 TRACE.exiting(SIGNATURE);
 
 

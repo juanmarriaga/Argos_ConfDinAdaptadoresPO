@@ -65,6 +65,10 @@ public class AddDynamicConfigurationBean implements Module {
 				.getPrincipalData();
 		MessageKey messageKey = message.getMessageKey();
 		AuditLogHelper audit = new AuditLogHelper(messageKey);
+		
+		audit.addAuditLogEntry(AuditLogStatus.SUCCESS,
+				AddDynamicConfigurationBean.class.getSimpleName()
+						+ ": Using custom bean. ");
 
 		// Get dynamic configuration provider class name and parameters
 		String dcProviderClassName = this
