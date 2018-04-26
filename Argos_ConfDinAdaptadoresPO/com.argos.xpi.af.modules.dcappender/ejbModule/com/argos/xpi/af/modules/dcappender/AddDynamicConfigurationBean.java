@@ -1,13 +1,18 @@
 package com.argos.xpi.af.modules.dcappender;
 
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.swing.JOptionPane;
 
 import com.argos.xpi.af.modules.dcappender.util.AuditLogHelper;
 import com.argos.xpi.af.modules.dcappender.util.DynamicConfigurationAttribute;
@@ -24,14 +29,22 @@ import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.aii.af.sdk.xi.mo.xmb.DynamicConfiguration;
 import com.sap.aii.af.sdk.xi.mo.xmb.XMBMessageOperator;
 import com.sap.engine.interfaces.messaging.api.MessageKey;
+import com.sap.engine.interfaces.messaging.api.PublicAPIAccessFactory;
+import com.sap.engine.interfaces.messaging.api.auditlog.AuditAccess;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
+import com.sap.engine.interfaces.messaging.api.exception.MessagingException;
 import com.sap.tc.logging.Location;
 
 /**
  * Session Bean implementation class AddDynamicConfigurationBean
  */
 @Stateless
-public class AddDynamicConfigurationBean implements Module {
+public class AddDynamicConfigurationBean implements Module, SessionBean {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 326059161189176393L;
 
 	private static final Location TRACE = Location
 			.getLocation(AddDynamicConfigurationBean.class.getName());
@@ -47,7 +60,9 @@ public class AddDynamicConfigurationBean implements Module {
 		parameterPrefixes.add(PARAMETER_PWD_PREFIX + PARAMETER_DC_PREFIX);
 		parameterPrefixes.add(PARAMETER_PWD_PREFIX + "." + PARAMETER_DC_PREFIX);
 	}
-
+	
+	
+	
 	private static final String PARAMETER_DC_PROVIDER_CLASS = "class";
 
 	/**
@@ -57,7 +72,7 @@ public class AddDynamicConfigurationBean implements Module {
 		// Not used in current implementation
 	}
 
-	@Override
+	
 	public ModuleData process(ModuleContext moduleContext, ModuleData moduleData)
 			throws ModuleException {
 
@@ -69,6 +84,19 @@ public class AddDynamicConfigurationBean implements Module {
 		audit.addAuditLogEntry(AuditLogStatus.SUCCESS,
 				AddDynamicConfigurationBean.class.getSimpleName()
 						+ ": Using custom bean. ");
+		int ent = 7 / 0;
+		try {
+			AuditAccess auditTest = PublicAPIAccessFactory.getPublicAPIAccess().getAuditAccess();
+			auditTest.addAuditLogEntry(messageKey, AuditLogStatus.SUCCESS, "AuditLog Nuevo test");
+			
+		} catch (MessagingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			throw new ModuleException("Error en inicio de adaptador");
+		}
+		
+		System.err.println("Esta Saliendo En el Log Lindo Cochito");
+		
 
 		// Get dynamic configuration provider class name and parameters
 		String dcProviderClassName = this
@@ -198,5 +226,33 @@ public class AddDynamicConfigurationBean implements Module {
 
 		return dcProviderParameters;
 
+	}
+
+
+	@Override
+	public void ejbActivate() throws EJBException, RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void ejbPassivate() throws EJBException, RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void ejbRemove() throws EJBException, RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setSessionContext(SessionContext arg0) throws EJBException, RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 }
